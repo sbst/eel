@@ -1,18 +1,18 @@
+import Checker
+from os.path import join
+
 class HashMap:
-    def __init__(self):
+    def __init__(self, path):
         self.data = {}
-
-    def put(self, key, value):
-        self.data.update({key: value})
-
+        self.path = path
 
     def get(self, key):
         return self.data.get(key)
 
-
-    def __getitem__(self, key):
-        return self.get(key)
-
-
-    def __setitem__(self, key, value):
-        self.put(key, value)
+    def process(self, key, input):
+        value = self.data.get(key)
+        if value == None:
+            self.data.update({key: input})
+        else:
+            if Checker.compare(join(self.path, input), join(self.path, value)):
+                print(self.data.pop(key) + " " + input)

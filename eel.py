@@ -1,5 +1,4 @@
 import HashMap
-import Checker
 import os
 import argparse
 
@@ -18,16 +17,10 @@ def get_path():
 def main():
     path = get_path()
     if path != None:
-        map = HashMap.HashMap()
+        map = HashMap.HashMap(path)
         for filename in os.listdir(path):
-            full_filename = os.path.join(path + filename)
-            size = os.path.getsize(full_filename)
-            value = map.get(size)
-            if value == None:
-                map.put(size, filename)
-            else:
-                if Checker.compare(full_filename, os.path.join(path + value)):
-                    print(map.data.pop(size) + " " + filename)
+            size = os.path.getsize(os.path.join(path, filename))
+            map.process(size, filename)
         return 0
     else:
         return 1

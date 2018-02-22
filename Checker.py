@@ -1,7 +1,6 @@
 from hashlib import sha256
 
-
-def get_hash(hasher, filename, blocksize=65536):
+def get_hash(hasher, filename, blocksize = 65536):
     with open(filename, "rb") as file:
         block = file.read(blocksize)
         while block:
