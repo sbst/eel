@@ -10,6 +10,7 @@ def get_hash(hasher, filename, blocksize = 65536):
         return hasher.hexdigest()
 
 
+# Functor for comparison hashes by get_hash
 class Checker:
     def __init__(self, target):
         if target == "":

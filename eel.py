@@ -1,5 +1,6 @@
 import HashMap
 import os
+import sys
 import argparse
 
 
@@ -25,4 +26,4 @@ def main():
 
 
 if __name__ == '__main__':
-    os._exit(main())
+    sys.exit(main())
